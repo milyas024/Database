@@ -1,0 +1,89 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package flightmanagementsystem;
+
+/**
+ *
+ * @author Hp
+ */
+public class ActuatorSystems {
+
+    private static int CABIN_PRESSURE_THRESHOLD = 11;
+    private static int AIRCRAFT_HEIGHT_THRESHOLD = 8000; //in feets
+
+    public ActuatorSystems(String airlinerId) {
+        FMSUtil.printActivity("Actuator Systems of Airliner " + airlinerId + " are coming online..");
+    }
+
+    public void reduceEngineSpeed() {
+        FMSUtil.printActivity("Actuator Systems :: Reducing Engine Speed.. ");
+    }
+
+    public void increaseEngineSpeed() {
+        FMSUtil.printActivity("Actuator Systems :: Increasing Engine Speed As Aircraft cruising to attain altitude..");
+
+    }
+
+
+    public void adjsutTailFlaps() {
+        FMSUtil.printActivity("Actuator Systems :: Adjust Tail flaps according to flying condition..");
+    }
+
+    public void openLandingGears() {
+        FMSUtil.printActivity("Actuator Systems :: Opening Landing Gears ready to Land!!");
+    }
+
+    public void closeLandingGears() {
+        FMSUtil.printActivity("Actuator Systems :: Closing Landing Gears");
+    }
+
+    public void engageOxygenMasks() {
+        FMSUtil.printActivity("Actuator Systems :: Drop Oxygen Masks as Aircraft reached maximum altitude..");
+    }
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package flightmanagementsystem;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+
+/**
+ *
+ * @author Hp
+ */
+public class Airliner {
+
+    private String airlinerId;
+    private String airlinerName;
+    private String source;
+    private String destination;
+    private FlightControlSystem flightControlSystem;
+    private SensorySystems sensorySystems;
+public Airliner(String airlinerName, String source, String destination) {
+        this.airlinerName = airlinerName;
+        this.airlinerId = "Plane_" + FMSUtil.getRandomNumber() + "_" + airlinerName + "_" + FMSUtil.getRandomNumber();
+        this.source = source;
+ }
+
+    public FlightControlSystem getFlightControlSystem() {
+        return flightControlSystem;
+    }
+
+    public ActuatorSystems getActucatorSystems() {
+        return actucatorSystems;
+    }
+
+    @Override
+    public String toString() {
+        return "Airline = " + airlinerName + ", Altitude = " + altitude + " feet, Cabin Pressure = " + cabinPressure + " psi, Speed = " + speed + " km/h, Direction = " + direction + ", Weather Condition = " + weatherCondition +", Airliner Mode = "+mode;
+    }
+
+}
