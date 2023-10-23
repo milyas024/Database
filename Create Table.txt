@@ -1,0 +1,93 @@
+create table PERSONS
+                   (
+                     Person_Id            NUMBER(12) not null,
+                     First_Name           VARCHAR2(100),
+                     Last_Name            VARCHAR2(15),
+                     Gender               VARCHAR2(1) ,
+                     Birth_Date           Date,
+                     Birth_Place          VARCHAR2(100),
+                     CONSTRAINT person_pk PRIMARY KEY (Person_Id)
+                     
+                   );
+                   
+                   create table Family
+                   (
+                     Person_Id            NUMBER(12) not null,
+                     Father_Id            NUMBER(12) not null,
+                     Mother_Id            NUMBER(12) not null,
+                    
+                     CONSTRAINT Family_pk PRIMARY KEY (Person_Id,Father_Id, Mother_Id ),
+                     CONSTRAINT FK_Person_Id FOREIGN KEY (Person_Id) REFERENCES PERSONS(Person_Id),
+                      CONSTRAINT FK_Father_Id FOREIGN KEY (Father_Id ) REFERENCES PERSONS(Person_Id),
+                       CONSTRAINT FK_Mother_Id FOREIGN KEY (Person_Id) REFERENCES PERSONS(Person_Id)
+                     
+                   )
+                   ;
+   create table Males
+                   (
+                     Males_Id            NUMBER(12) not null,
+                     Person_Id            NUMBER(5) not null,
+                     Gender               VARCHAR2(1) ,         
+                   
+                     CONSTRAINT Males_pk PRIMARY KEY (Males_Id),
+                     CONSTRAINT FK1_person_Id FOREIGN KEY (Person_Id) REFERENCES PERSONS(Person_Id)
+                     
+                   );
+                   
+                   
+               create table FeMales
+                   (
+                     Female_Id            NUMBER(12) not null,
+                     Person_Id            NUMBER(12) not null,
+                     Gender               VARCHAR2(5) ,         
+                   
+                     CONSTRAINT FeMales_pk PRIMARY KEY (Female_Id  ),
+                     CONSTRAINT FK2_person_Id FOREIGN KEY (Person_Id) REFERENCES PERSONS(Person_Id)
+                     
+                   );
+                   
+                   
+         
+                   
+                   
+          create table MALE_FEMALE_PAIRS
+                    ( Pair_ID NUMBER(12) not null,
+                      FEMALE_ID NUMBER(12) not null,
+                      MALES_ID NUMBER(12) not null,
+
+                      CONSTRAINT pair_pk PRIMARY KEY (Pair_ID),
+                      CONSTRAINT  FK_female_Id FOREIGN KEY ( FEMALE_ID) REFERENCES females( FEMALE_ID),
+                      CONSTRAINT   FK_male_Id FOREIGN KEY (  MALES_ID) REFERENCES males( MALES_ID)
+                    );
+
+
+Create table Married
+                   (
+                     Married_Id           NUMBER(12) not null,
+                     Married_date         Date not null,
+                     place                 VARCHAR2(5),
+                     Pair_ID                NUMBER(12) not null,
+                          
+                   
+                    CONSTRAINT Married_pk PRIMARY KEY (Married_Id),
+                    CONSTRAINT   fk_paired_Id FOREIGN KEY ( Pair_ID) REFERENCES MALE_FEMALE_PAIRS( Pair_ID)
+                     
+                   );
+
+
+
+Create table slibing
+                   (
+                     Slibing_Id           NUMBER(12) not null,
+                     
+                     Pair_ID                NUMBER(12) not null,
+                          
+                   
+                    CONSTRAINT Slibing_pk PRIMARY KEY ( Slibing_Id),
+                    CONSTRAINT   fk_pair_Id FOREIGN KEY ( Pair_ID) REFERENCES MALE_FEMALE_PAIRS( Pair_ID)
+                     
+                   );
+                   
+                   
+                   
+                   
