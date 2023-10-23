@@ -1,0 +1,40 @@
+insert into tbladmin (ADMIN_ID, ADDED_DATE, EMAIL, PASSWORD, NAME)
+values (1, to_date('27-11-2022', 'dd-mm-yyyy'), 'admin@gmail.com', 'admin', 'Muhammad Ilyas');
+
+
+insert into tblcustomer (CUSTOMER_ID, ADDRESS, ADDED_DATE, EMAIL, GENDER, NAME, PASSWORD, PHONE, PIN_CODE)
+values (1, 'cant lahore', to_date('27-11-2022', 'dd-mm-yyyy'), 'ilyas@gmail.com', 'M', 'Muhammad Ilyas', 'ilyas', '3450276968', '65');
+
+insert into tblcustomer (CUSTOMER_ID, ADDRESS, ADDED_DATE, EMAIL, GENDER, NAME, PASSWORD, PHONE, PIN_CODE)
+values (2, 'Faisalbad', to_date('27-11-2022', 'dd-mm-yyyy'), 'wasim@gmail.com', 'M', 'Wsim', 'wasim', '3450276968', '65');
+
+insert into tblcustomer (CUSTOMER_ID, ADDRESS, ADDED_DATE, EMAIL, GENDER, NAME, PASSWORD, PHONE, PIN_CODE)
+values (3, 'Karachi', to_date('27-11-2022', 'dd-mm-yyyy'), 'Ahmed@gmail.com', 'M', 'ahmed', 'ahmed', '3450276968', '65');
+
+
+insert into tblproduct (ID, ACTIVE, CODE, CREATE_DATE, DESCRIPTION, IMAGE, IMAGE_NAME, NAME, PRICE, MRP_PRICE, PRODUCT_CATEGORY)
+values (1, 'Active', '1', to_date('27-11-2022', 'dd-mm-yyyy'), 'samg sung glaxy', '', 'samg sung glaxy', 'samg sung glaxy', '45000', '37000', 'Mobile');
+
+insert into tblproduct (ID, ACTIVE, CODE, CREATE_DATE, DESCRIPTION, IMAGE, IMAGE_NAME, NAME, PRICE, MRP_PRICE, PRODUCT_CATEGORY)
+values (2, 'Active', '2', to_date('27-11-2022', 'dd-mm-yyyy'), 'NOKIA 12 ', '', 'Nokia 12 mobile ', 'samg sung glaxy', '40000', '37000', 'Mobile');
+
+insert into tblproduct (ID, ACTIVE, CODE, CREATE_DATE, DESCRIPTION, IMAGE, IMAGE_NAME, NAME, PRICE, MRP_PRICE, PRODUCT_CATEGORY)
+values (3, 'Active', '3', to_date('27-11-2022', 'dd-mm-yyyy'), '4 GB RAM  200  Hard drive', '', 'Nokia 12 mobile ', 'HP core I5 Lap top', '70000', '50000', 'LapTop');
+
+
+
+
+insert into tblorders (ID, ORDER_NO, CUSTOMER_NAME, MOBILE_NUMBER, EMAIL_ID, ADDRESS, ADDRESS_TYPE, PINCODE, IMAGE, PRODUCT_NAME, QUANTITY, PRODUCT_PRICE, PRODUCT_SELLING_PRICE, PRODUCT_TOTAL_PRICE, ORDER_STATUS, ORDER_DATE, PAYMENT_MODE, PAYMENT_ID)
+values (3, 2527, 'Muhammad  Ilyas', '3459999999', 'ilyas@gmail.com', 'Cant Lahore ', '', '2324', '', 'Tea Shirt', 1, '1000', '900', '1000', 'Deliver', to_date('25-11-2022', 'dd-mm-yyyy'), 'easy paisa ', 1);
+
+insert into tblorders (ID, ORDER_NO, CUSTOMER_NAME, MOBILE_NUMBER, EMAIL_ID, ADDRESS, ADDRESS_TYPE, PINCODE, IMAGE, PRODUCT_NAME, QUANTITY, PRODUCT_PRICE, PRODUCT_SELLING_PRICE, PRODUCT_TOTAL_PRICE, ORDER_STATUS, ORDER_DATE, PAYMENT_MODE, PAYMENT_ID)
+values (4, 2528, 'Muhammad  wasim', '3459999999', 'wasim@gmail.com', 'Faisalabad ', '', '2324', '', 'Watch', 1, '2500', '2000', '2500', 'Pending', to_date('27-11-2022', 'dd-mm-yyyy'), 'easy paisa ', 2);
+
+insert into tblorders (ID, ORDER_NO, CUSTOMER_NAME, MOBILE_NUMBER, EMAIL_ID, ADDRESS, ADDRESS_TYPE, PINCODE, IMAGE, PRODUCT_NAME, QUANTITY, PRODUCT_PRICE, PRODUCT_SELLING_PRICE, PRODUCT_TOTAL_PRICE, ORDER_STATUS, ORDER_DATE, PAYMENT_MODE, PAYMENT_ID)
+values (2, 2526, 'Muhammad  wasim', '3459999999', 'wasim@gmail.com', 'Faisalabad ', '', '2324', '', 'Nokia', 1, '70000', '50000', '5000', 'Deliver', to_date('26-11-2022', 'dd-mm-yyyy'), 'easy paisa ', 2);
+
+insert into tblorders (ID, ORDER_NO, CUSTOMER_NAME, MOBILE_NUMBER, EMAIL_ID, ADDRESS, ADDRESS_TYPE, PINCODE, IMAGE, PRODUCT_NAME, QUANTITY, PRODUCT_PRICE, PRODUCT_SELLING_PRICE, PRODUCT_TOTAL_PRICE, ORDER_STATUS, ORDER_DATE, PAYMENT_MODE, PAYMENT_ID)
+values (1, 2525, 'Muhammad  Ilyas', '3459999999', 'ilyas@gmail.com', 'Cant Lahore ', '', '2324', '', 'Sam sang glaxy ', 3, '3000', '2500', '2500', 'Pending', to_date('27-11-2022', 'dd-mm-yyyy'), 'easy paisa ', 1);
+
+
+

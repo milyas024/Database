@@ -1,0 +1,137 @@
+
+
+create table TBLCUSTOMER
+(
+  CUSTOMER_ID INTEGER not null,
+  ADDRESS     VARCHAR2(255) not null,
+  ADDED_DATE  DATE not null,
+  EMAIL       VARCHAR2(100) not null,
+  GENDER      VARCHAR2(6) not null,
+  NAME        VARCHAR2(50) not null,
+  PASSWORD    VARCHAR2(60) not null,
+  PHONE       VARCHAR2(200) not null,
+  PIN_CODE    VARCHAR2(255) not null
+)
+;
+alter table TBLCUSTOMER
+  add primary key (CUSTOMER_ID);
+
+
+create table TBLPRODUCT
+                      (
+                        ID               INTEGER not null,
+                        ACTIVE           VARCHAR2(100),
+                        CODE             VARCHAR2(5),
+                        CREATE_DATE      DATE,
+                        DESCRIPTION      VARCHAR2(255),
+                        IMAGE            VARCHAR2(100),
+                        IMAGE_NAME       VARCHAR2(400),
+                        NAME             VARCHAR2(30),
+                        PRICE            VARCHAR2(200),
+                        MRP_PRICE        VARCHAR2(200),
+                        PRODUCT_CATEGORY VARCHAR2(100)
+                      );
+                     
+                      alter table TBLPRODUCT
+                        add primary key (ID);
+
+
+
+create table TBLORDERS
+                             (
+                               ID                    INTEGER not null,
+                               ORDER_NO              INTEGER,
+                               CUSTOMER_NAME         VARCHAR2(200),
+                               MOBILE_NUMBER         VARCHAR2(100),
+                               EMAIL_ID              VARCHAR2(100),
+                               ADDRESS               VARCHAR2(400),
+                               ADDRESS_TYPE          VARCHAR2(100),
+                               PINCODE               VARCHAR2(100),
+                               IMAGE                 VARCHAR2(200),
+                               PRODUCT_NAME          VARCHAR2(400),
+                               QUANTITY              INTEGER,
+                               PRODUCT_PRICE         VARCHAR2(100),
+                               PRODUCT_SELLING_PRICE VARCHAR2(100),
+                               PRODUCT_TOTAL_PRICE   VARCHAR2(100),
+                               ORDER_STATUS          VARCHAR2(100),
+                               ORDER_DATE            DATE,
+                               PAYMENT_MODE          VARCHAR2(100),
+                               PAYMENT_ID            INTEGER
+                             );
+                             
+                             alter table TBLORDERS
+                               add primary key (ID);
+
+
+
+create table TBLCART
+                     (
+                       ID             INTEGER not null,
+                       DISCOUNT_PRICE VARCHAR2(200),
+                       QUANTITY       INTEGER not null,
+                       TOTAL_PRICE    VARCHAR2(200),
+                       CUSTOMER_ID    INTEGER not null,
+                       PRODUCT_ID     INTEGER not null,
+                       MRP_PRICE      VARCHAR2(200)
+                     )
+                     
+                     alter table TBLCART
+                       add primary key (ID);
+                       
+                     alter table TBLCART
+                       add constraint FK_CUSTOMERCART foreign key (CUSTOMER_ID)
+                       references TBLCUSTOMER (CUSTOMER_ID);
+                               
+
+
+
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+create table TBLORDERS
+                      (
+                        ID                    INTEGER not null,
+                        ORDER_NO              INTEGER,
+                        CUSTOMER_NAME         VARCHAR2(200),
+                        MOBILE_NUMBER         VARCHAR2(100),
+                        EMAIL_ID              VARCHAR2(100),
+                        ADDRESS               VARCHAR2(400),
+                        ADDRESS_TYPE          VARCHAR2(100),
+                        PINCODE               VARCHAR2(100),
+                        IMAGE                 VARCHAR2(200),
+                        PRODUCT_NAME          VARCHAR2(400),
+                        QUANTITY              INTEGER,
+                        PRODUCT_PRICE         VARCHAR2(100),
+                        PRODUCT_SELLING_PRICE VARCHAR2(100),
+                        PRODUCT_TOTAL_PRICE   VARCHAR2(100),
+                        ORDER_STATUS          VARCHAR2(100),
+                        ORDER_DATE            DATE,
+                        PAYMENT_MODE          VARCHAR2(100),
+                        PAYMENT_ID            INTEGER
+                      )
+                     
