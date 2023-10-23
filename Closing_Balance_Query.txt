@@ -1,0 +1,43 @@
+Declare 
+Cursor A is 
+Select A.FOLIO_NUMBER,a.CLOSING_DATE,a.fund_code,A.TOTAL_UNITS,A.BLOCKED_UNITS,B.block_Qty From 
+(
+SELECT ube.FOLIO_NUMBER,
+       ube.FUND_CODE,
+       ube.TOTAL_UNITS,
+       ube.PLEDGED_UNITS,
+       ube.CLOSING_DATE,
+       ube.BLOCKED_UNITS,
+       ube.UNIT_PLAN,
+       ube.UNIT_CLASS
+FROM clean.unit_balance_electronic ube
+JOIN (
+  SELECT FOLIO_NUMBER, MAX(CLOSING_DATE) AS MAX_CLOSING_DATE,fund_code
+  FROM clean.unit_balance_electronic
+  WHERE fund_code = 31
+    AND folio_number IN (
+      SELECT ur.folio_number
+      FROM clean.unit_redemption ur
+      WHERE ur.redemption_date = TO_DATE('29-May-2023', 'DD-Mon-YYYY')
+        AND ur.fund_code = 31
+    )
+  GROUP BY FOLIO_NUMBER,fund_code
+) max_dates
+ON ube.FOLIO_NUMBER = max_dates.FOLIO_NUMBER AND ube.CLOSING_DATE = max_dates.MAX_CLOSING_DATE and ube.fund_code =max_dates.fund_code
+) A ,(
+Select Folio_number, Sum(Qty) Block_Qty From(
+       SELECT ur.folio_number,NVL(UNCERTIFIED_QUANTITY,0) QTY
+      FROM clean.unit_redemption ur
+      WHERE ur.redemption_date = TO_DATE('29-May-2023', 'DD-Mon-YYYY')
+        AND ur.fund_code = 31
+       union all
+        SELECT tr.TO_FOLIO_NO,NVL(TR.QUANTITY,0)
+      FROM  CLEAN.UNIT_TRANSFER tr
+      WHERE TRANSFER_DATE = TO_DATE('29-May-2023', 'DD-Mon-YYYY')
+        AND tr.From_Fund_Code = 31) Group by Folio_number having Sum(Qty) >0
+) B Where a.folio_number = b.folio_number and nvl(A.BLOCKED_UNITS,0)<>B.block_Qty;
+Begin 
+For i in a loop
+    update clean.unit_balance_electronic set BLOCKED_UNITS = i.block_Qty Where CLOSING_DATE = i.CLOSING_DATE and FOLIO_NUMBER=i.FOLIO_NUMBER and FUND_CODE =i.FUND_CODE;
+    End Loop;
+End;
