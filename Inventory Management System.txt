@@ -1,0 +1,92 @@
+create table Computer
+                   (
+                     Computer_Id                 int not null,
+                     Computer_Company            VARCHAR2(100),
+                     BarCode                     VARCHAR2(50),
+                     Computer_Description        VARCHAR2(500) ,
+                     Model                       VARCHAR2(100),
+                     Department_Id               int not null,
+                     Office_No                   int not null,
+                   
+                    CONSTRAINT computer_pk      PRIMARY KEY (Computer_Id),
+                     
+                   CONSTRAINT FK_Department FOREIGN KEY (Department_Id)
+                   REFERENCES  Department(Department_Id),
+
+                   CONSTRAINT FK_Office FOREIGN KEY (Office_No)
+                   REFERENCES  Office(Office_No)
+                     
+
+                     
+                   );
+                   
+          create table Laptop
+                   (
+                     Laptop_Id                int not null,
+                     Laptop_Company            VARCHAR2(100),
+                     BarCode                   VARCHAR2(50),
+                     Laptop_Description        VARCHAR2(500) ,
+                     Model                      VARCHAR2(100),
+                     Department_Id               int not null,
+                     Office_No                   int not null,
+                   
+                     CONSTRAINT laptop_pk      PRIMARY KEY (Laptop_Id),
+
+                    CONSTRAINT FK_Department FOREIGN KEY (Department_Id)
+                   REFERENCES  Department(Department_Id),
+
+                   CONSTRAINT FK_Office FOREIGN KEY (Office_No)
+                   REFERENCES  Office(Office_No)
+                     
+                   );
+
+
+   create table  Screen
+                   (
+                     Screen_Id                 int not null,
+                     Screen_Company            VARCHAR2(100),
+                     BarCode                   VARCHAR2(50),
+                     Screen_Description        VARCHAR2(500) ,
+                     Model                      VARCHAR2(100),
+                     Department_Id               int not null,
+                     Office_No                   int not null,
+                   
+                     CONSTRAINT screen_pk      PRIMARY KEY (Screen_Id),
+
+                    CONSTRAINT FK_Department FOREIGN KEY (Department_Id)
+                    REFERENCES  Department(Department_Id),
+
+                   CONSTRAINT FK_Office FOREIGN KEY (Office_No)
+                   REFERENCES  Office(Office_No)
+                     
+                   );
+
+
+
+   create table  Department
+                   (
+                     Department_Id                 int not null,
+                     Department_Name               VARCHAR2(100),
+                    
+                     CONSTRAINT department_pk      PRIMARY KEY (Department_Id)
+                     
+                   );
+
+
+
+ create table  Office
+                   (
+                     Office_No               int not null,
+                     Office_Adress            VARCHAR2(100),
+                     
+                   
+                     CONSTRAINT office_pk      PRIMARY KEY (Office_No )
+                     
+                   );
+
+
+
+
+
+
+   
